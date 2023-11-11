@@ -25,7 +25,7 @@ SECRET_KEY = '7a8(4bh(%&amg0skdnt9t7)(4@&8+^!pl_yco3fssz2_zjab+e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -124,5 +124,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'grader/static'),
 ]

@@ -1,9 +1,7 @@
 import numpy as np
 import nltk
-nltk.download('all')
-from nltk.corpus import stopwords 
 import re
-
+from nltk.corpus import stopwords
 from gensim.models import Word2Vec
 import gensim.models.keyedvectors as word2vec
 import math
@@ -19,7 +17,7 @@ def essay_to_wordlist(essay_v, remove_stopwords):
 
 def essay_to_sentences(essay_v, remove_stopwords):
     """Sentence tokenize the essay and call essay_to_wordlist() for word tokenization."""
-    tokenizer = nltk.download('tokenizers/punkt/english.pickle')
+    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
     raw_sentences = tokenizer.tokenize(essay_v.strip())
     sentences = []
     for raw_sentence in raw_sentences:
