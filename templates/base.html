@@ -2,24 +2,113 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Let's Grade Essays{% endblock %}</title>
+    <title>{% block title %}Gradewise.ai{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Essays</a>
+    <nav class="navbar ">
+      <div class="content">
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="https://res.cloudinary.com/waleszn/image/upload/v1700476684/lodo_zrgqtk.png" alt="Logo">
+        </a>
+      </div>
+      <div class="nav_links">
+        <div class="navtext">
+          Home
+        </div>
+        <div class="navtext_green">
+          Essays
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <div class="profile">
+          MA
+        </div>
+        <p>madegbuyi@gmail.com</p>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <g clip-path="url(#clip0_33_1548)">
+          <path d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z" fill="#66737B"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_33_1548">
+          <rect width="24" height="24" fill="white"/>
+          </clipPath>
+          </defs>
+          </svg>
       </div>
     </nav>
+    <hr>
 
-    <div class="container">
-      <ol class="breadcrumb my-4">
-        {% block breadcrumb %}
+    <div class="main-essay">
+      <div class="">
+      
+        {% block content %}
         {% endblock %}
-      </ol>
-      {% block content %}
-      {% endblock %}
-    </div>
+      </div>
+      </div>
   </body>
+
+  <style>
+    .navbar{
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+    }
+    .profile{
+      background-color: #DCFFDB;
+      color: #099620;
+      padding: 10px;
+      border-radius: 100%;
+    }
+    .main-essay{
+      background-color: #F8F9FB;
+      width: 100%;
+      height: 90vh;
+     
+
+    }
+    .main-content{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      width: 70%;
+      background-color: white;
+      max-width: 900px;
+    }
+    .profile-section{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      align-content: center;
+    }
+
+    .nav_links{
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .navtext{
+      color: #667085;
+      font-size: 1rem;
+      font-weight: 600;
+
+    }
+    .navtext_green{
+      color: #099620;
+      font-weight: 600;
+      font-size: 1rem;
+      padding-bottom: 10px;
+      border-bottom: #099620 2px solid;
+    }
+    
+    .content{
+      /* margin: auto; */
+      /* width: 90%; */
+    }
+
+    
+  </style>
 </html>

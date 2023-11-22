@@ -1,54 +1,211 @@
 {% extends 'base.html' %}
-{% block breadcrumb %}
-  <li class="breadcrumb-item active">Question Sets</li>
-{% endblock %}
-{% block content %}
-    {% if questions_list %}
-        <p class="h3">Alright! Let's select a Question Set to start writing!</p>
-        <!-- <ul>
-            {% for question in questions_list %}
-            <li><a href="/{{ question.set }}">Question Set {{ question.set }}</a></li>
-            {% endfor %}
-        </ul> -->
+
+<div>
+    {% block content %}
+    <div class="heading">
+        <div class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 7 13" fill="none">
+                <path
+                    d="M2.13035 6.49999L6.74591 1.78939C7.08915 1.43907 7.08399 0.876285 6.73436 0.532362C6.38474 0.188439 5.82306 0.193619 5.47982 0.543932L0.254089 5.87727C-0.0846964 6.22303 -0.0846964 6.77696 0.254089 7.12272L5.47982 12.4561C5.82306 12.8064 6.38474 12.8115 6.73436 12.4676C7.08399 12.1237 7.08915 11.5609 6.74591 11.2106L2.13035 6.49999Z"
+                    fill="#81899E" />
+            </svg>
+            <p>Back to Home</p>
+        </div>
+
+        <div class="group-tab">
+            <div class="tab_one">
+                <h4 class="green-bg">1</h4>
+                <p class="green-text">Essay Details</p>
+            </div>
+            <div class="gray-line">
+            </div>
+
+            <div class="tab_one">
+                <h4 class="gray-bg">2</h4>
+                <p class="gray-text">Criteria Selection</p>
+            </div>
+
+            <div class="gray-line">
+            </div>
+
+            <div class="tab_one">
+                <h4 class="gray-bg">3</h4>
+                <p class="gray-text">Submission</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="center-text">
+        <p class="main-text">Select a question to score</p>
+        <p class="subtitle">Select essay from saved essay or enter essay manually</p>
+
+    </div>
+    <div class="main-content">
+        {% if questions_list %}
+
+
         <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Question</th>
-                    <th scope="col">Min Score</th>
-                    <th scope="col">Max Score</th>
-                  </tr>
-                </thead>
-                {% for question in questions_list %}
-                    <tr class="clickable-row" data-href='/{{ question.set }}'>
-                        <th scope="row">{{ question.set }}</th>
-                        <td>{{ question.question_title|truncatewords:15 }}</td>
-                        <td>{{ question.min_score }}</td>
-                        <td>{{ question.max_score }}</td>
-                      </tr>
-                {% endfor %}
-                <tbody>
-                </tbody>
+            <div class="saved">
+                Select from saved essays
+            </div>
+            <thead>
+                <tr class="bg-gray p-3">
+                    <th class="heading_text" scope="col">#</th>
+                    <th style="color: #42526D;" class="heading_text" scope="col">Question</th>
+                    <th class="heading_text" scope="col">Max Score</th>
+                    <th class="heading_text" scope="col">Action</th>
+                </tr>
+            </thead>
+            {% for question in questions_list %}
+            <tr style="padding: 1rem;" class="clickable-row" data-href='/{{ question.set }}'>
+                <th scope="row">{{ question.set }}</th>
+                <td>{{ question.question_title|truncatewords:12 }}</td>
+                <td>{{ question.max_score }}</td>
+                <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
+                        <path
+                            d="M2.42894 15.6545L8.55807 9.14228C9.16207 8.50053 9.16207 7.49948 8.55807 6.85773L2.42894 0.345532C2.11351 0.0103874 1.58611 -0.00559428 1.25097 0.309836C0.915824 0.625267 0.899842 1.15266 1.21527 1.48781L7.3444 8L1.21527 14.5122C0.899842 14.8473 0.915823 15.3747 1.25097 15.6902C1.58611 16.0056 2.11351 15.9896 2.42894 15.6545Z"
+                            fill="#099620" />
+                    </svg>
+                </td>
+            </tr>
+            {% endfor %}
+            <tbody>
+            </tbody>
         </table>
+    </div>
 
-        <style type="text/css">
-            tr:hover {
-                background-color: #cc99ff;
-                cursor: pointer;
-            }
-        </style>
+    <style type="text/css">
+        table{
+            border-radius: 20px;
+            padding: 1rem;
+        }
+        .saved{
+            color: #099620;
+            padding: 1.5rem;
+            border-bottom: 2px solid #099620;
+            font-size: 19px;
+            width: fit-content;
+            font-weight: 600;
+            padding-bottom: 4px;
+        }
+        
+        .main-text {
+            color: black;
+            font-weight: 600;
+            font-size: 35px;
+
+        }
+
+        .heading_text {
+            color: #42526D;
+            font-size: 14px;
+        }
+
+        .subtitle {
+            color: #7E8696;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .gray-line {
+            background: #D9D9D9;
+            height: 3px;
+            width: 50px;
+        }
+
+        .group-tab {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 2rem;
+        }
+
+        .center-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .heading {
+            margin: auto;
+            width: 90%;
+            display: flex;
+            gap: 5rem;
+        }
+
+        .back-btn {
+            display: flex;
+            gap: 5px;
+            width: 50%;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            align-items: center;
+            color: #81899E;
+        }
+
+        .tab_one {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        tr:hover {
+            background-color: #cc99ff;
+            cursor: pointer;
+        }
+
+        table {
+            background-color: white;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 70%;
+            background-color: white;
+
+        }
+
+        .green-bg {
+            font-size: 14px;
+            background-color: #099620;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 100%;
+        }
+
+        .gray-bg {
+            font-size: 14px;
+            background-color: #DBDBDB;
+            color: #000000;
+            padding: 10px;
+            border-radius: 100%;
+        }
+
+        .green-text {
+            color: #838383;
+            font-weight: 600;
+        }
+    </style>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script>
-            jQuery(document).ready(function($) {
-            $(".clickable-row").click(function() {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".clickable-row").click(function () {
                 window.location = $(this).data("href");
             });
         });
-        </script>
+    </script>
     {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+    <p>No polls are available.</p>
+</div>
+{% endif %}
 {% endblock %}
-

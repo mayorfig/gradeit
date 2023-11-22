@@ -25,7 +25,7 @@ SECRET_KEY = '7a8(4bh(%&amg0skdnt9t7)(4@&8+^!pl_yco3fssz2_zjab+e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.ngrok-free.app']
 
 
 # Application definition
@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+CSRF_TRUSTED_ORIGINS = ['https://60ef-105-112-222-70.ngrok-free.app']
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 

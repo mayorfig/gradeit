@@ -1,21 +1,183 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
-{% block breadcrumb %}
-  <li class="breadcrumb-item active"><a href="{% url 'index' %}">Home</a></li>
-  <li class="breadcrumb-item active"><a href="{% url 'question' essay.question.set %}">Question {{ essay.question.set }}</a></li>
-  <li class="breadcrumb-item active">Essay</li>
-{% endblock %}
+
 {% block content %}
-    <div class="jumbotron">
-        <h1 class="display-4">Grade {{ essay.score }}</h1>
-        <p class="lead">Congratulations! Maximum Possible Score on this question is {{ essay.question.max_score }}</p>
-        <hr class="my-4">
-        <p>Your essay is graded by the magical power of neural networks.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+
+<section>
+  <div class="main-submission">
+    <div class="user">
+      <div class="back">
+        <a class="back-btn" href="https://gradwise.vercel.app/essay">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 7 13" fill="none">
+            <path
+              d="M2.13035 6.49999L6.74591 1.78939C7.08915 1.43907 7.08399 0.876285 6.73436 0.532362C6.38474 0.188439 5.82306 0.193619 5.47982 0.543932L0.254089 5.87727C-0.0846964 6.22303 -0.0846964 6.77696 0.254089 7.12272L5.47982 12.4561C5.82306 12.8064 6.38474 12.8115 6.73436 12.4676C7.08399 12.1237 7.08915 11.5609 6.74591 11.2106L2.13035 6.49999Z"
+              fill="#81899E" />
+          </svg>
+          <p>Back to all submission</p>
+        </div>
+        <p class="name_text">Eniola Adegbuyi</p>
+        </a>
     </div>
 
-    <div class="container">
-            <h2 class="display-4">Your Submission</h2>
-            <p class="text-justify">{{ essay.content }}</p>
+    <div class="submission_section">
+      <div class="answer-banner">
+        <p class="text-justify answer">{{ essay.content }}</p>
+      </div>
+
+      <div class="grades">
+        <div class="grade-heading">
+          <p>Final Grade</p>
+          <span>({{ essay.score }} / {{ essay.question.max_score }})</span>
         </div>
+
+        <div class="grades-body">
+          <p>Your essay is graded by the magical power of neural networks.</p>
+          <div>
+            <p class="gray-text">Student name</p>
+            <p class="name">Eniola Adegbuyi</p>
+          </div>
+
+         <div style="display: flex; align-items: center; justify-content: center;">
+          <button class="submit">Download Grade</button>
+         </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- <div class="jumbotr">
+  <h1 class="display-4">Grade {{ essay.score }}</h1>
+  <p class="lead">Congratulations! Maximum Possible Score on this question is {{ essay.question.max_score }}</p>
+  <hr class="my-4">
+  <p>Your essay is graded by the magical power of neural networks.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+
+<div class="container">
+  <h2 class="display-4">Your Submission</h2>
+  <p class="text-justify">{{ essay.content }}</p>
+</div> -->
+
+<style>
+  .answer-banner {
+    width: 80%;
+  }
+a{
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+
+}
+  .grades {
+    width: 100%;
+    max-width: 500px;
+
+    height: 20.0625rem;
+    border-radius: 30px;
+    border: 1px solid #EBEEEF;
+    background: white;
+    box-shadow: 0px 4px 27px 0px rgba(0, 0, 0, 0.04);
+
+  }
+
+  .grade-heading {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    border-top: 30px;
+    gap: 1rem;
+    justify-content: center;
+    background-color: #ECFFEC;
+  }
+  .submit {
+    display: flex;
+    padding: 1.1875rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 18px;
+    align-self: stretch;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.57);
+    background: linear-gradient(180deg, #0EBE5F 0%, #099620 100%);
+    box-shadow: 0px -0.5px 1px 0.2px rgba(220, 255, 219, 0.37) inset;
+  }
+  .grade-heading>p {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .grade-heading>span {
+    color: #099620;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .grades-body {
+    padding: 1rem;
+  }
+
+  .answer {
+    color: #4D5972;
+  }
+
+  .submission_section {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+
+  }
+  .gray-text{
+    color: rgba(0, 21, 35, 0.60);
+    font-weight: 500;
+
+  }
+  .black-text{
+    color: #101828;
+    font-weight: 500;
+  }
+
+  section {
+    background-color: white;
+    height: 90vh;
+
+  }
+
+  .name_text {
+    padding: 15px 5px;
+    color: #101828;
+    font-weight: bold;
+  }
+
+  .main-submission {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+
+
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .back {
+    display: flex;
+    gap: 5px;
+    /* width: 50%; */
+
+    align-items: center;
+    color: #81899E;
+  }
+</style>
 {% endblock %}
