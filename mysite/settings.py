@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://de19-102-89-23-193.ngrok-free.app', ]
+CSRF_TRUSTED_ORIGINS = ['https://1a91-102-89-33-75.ngrok-free.app', ]
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 

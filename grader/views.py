@@ -19,6 +19,13 @@ def index(request):
     }
     return render(request, 'grader/index.html', context)
 
+def responses(request):
+    questions_list = Question.objects.order_by('set')
+    context = {
+        'questions_list': questions_list,
+    }
+    return render(request, 'grader/responses.html', context)
+
 def essay(request, question_id, essay_id):
     essay = get_object_or_404(Essay, pk=essay_id)
     context = {
