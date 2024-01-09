@@ -6,7 +6,7 @@
   <div class="main-submission">
     <div class="user">
       <div class="back">
-        <a class="back-btn" href="https://gradwise.vercel.app/essay">
+        <a class="back-btn" href="/responses">
           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 7 13" fill="none">
             <path
               d="M2.13035 6.49999L6.74591 1.78939C7.08915 1.43907 7.08399 0.876285 6.73436 0.532362C6.38474 0.188439 5.82306 0.193619 5.47982 0.543932L0.254089 5.87727C-0.0846964 6.22303 -0.0846964 6.77696 0.254089 7.12272L5.47982 12.4561C5.82306 12.8064 6.38474 12.8115 6.73436 12.4676C7.08399 12.1237 7.08915 11.5609 6.74591 11.2106L2.13035 6.49999Z"
@@ -14,7 +14,7 @@
           </svg>
           <p>Back to all submission</p>
         </div>
-        <p class="name_text">Eniola Adegbuyi</p>
+        <p class="name_text">{{ essay.name|default:"--"|title }}</p>
         </a>
     </div>
 
@@ -26,14 +26,14 @@
       <div class="grades">
         <div class="grade-heading">
           <p>Final Grade</p>
-          <span>({{ essay.score }} / {{ essay.question.max_score }})</span>
+          <span>({{ essay.score|default:0 }} / {{ essay.question.max_score }})</span>
         </div>
 
         <div class="grades-body">
           <p>Your essay is graded by the magical power of neural networks.</p>
           <div>
             <p class="gray-text">Student name</p>
-            <p class="name">Eniola Adegbuyi</p>
+            <p class="name">{{ essay.name|default:"--"|title }}</p>
           </div>
 
          <div style="display: flex; align-items: center; justify-content: center;">
