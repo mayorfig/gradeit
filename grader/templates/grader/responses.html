@@ -44,7 +44,7 @@
 
     </div>
     <div class="main-content">
-        {% if questions_list %}
+        {% if essay_list %}
 
 
         <table class="table">
@@ -57,21 +57,24 @@
                     <th style="color: #42526D;" class="heading_text" scope="col">Answers</th>
                     <th class="heading_text" scope="col">Student name</th>
                     <th class="heading_text" scope="col">Final grade</th>
-                    <th class="heading_text" scope="col">Action</th>
+                    <th class="heading_text" scope="col">Submitted On</th>
+                    {% comment %} <th class="heading_text" scope="col">Action</th> {% endcomment %}
                 </tr>
             </thead>
-            {% for question in questions_list %}
-            <tr style="padding: 1rem;" class="clickable-row" data-href='/{{ question.set }}'>
-                <th scope="row">{{ question.set }}</th>
-                <td>{{ question.question_title|truncatewords:12 }}</td>
-                <td>{{ question.max_score }}</td>
-                <td>
+            {% for essay in essay_list %}
+            <tr style="padding: 1rem;" class="clickable-row" data-href='/{{ essay.question.set }}/essay{{ essay.id  }}'>
+                <th scope="row">{{ essay.matric_no|default:"--"|upper }}</th>
+                <td>{{ essay.content|truncatewords:12 }}</td>
+                <td>{{ essay.name|default:"--"|title }}</td>
+                <td>{{ essay.question.max_score }}</td>
+                <td>{{ essay.created_at|date:"d M Y" }}</td>
+                {% comment %} <td>
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
                         <path
                             d="M2.42894 15.6545L8.55807 9.14228C9.16207 8.50053 9.16207 7.49948 8.55807 6.85773L2.42894 0.345532C2.11351 0.0103874 1.58611 -0.00559428 1.25097 0.309836C0.915824 0.625267 0.899842 1.15266 1.21527 1.48781L7.3444 8L1.21527 14.5122C0.899842 14.8473 0.915823 15.3747 1.25097 15.6902C1.58611 16.0056 2.11351 15.9896 2.42894 15.6545Z"
                             fill="#099620" />
                     </svg>
-                </td>
+                </td> {% endcomment %}
             </tr>
             {% endfor %}
             <tbody>
