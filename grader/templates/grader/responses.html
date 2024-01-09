@@ -66,7 +66,7 @@
                 <th scope="row">{{ essay.matric_no|default:"--"|upper }}</th>
                 <td>{{ essay.content|truncatewords:12 }}</td>
                 <td>{{ essay.name|default:"--"|title }}</td>
-                <td>{{ essay.question.max_score }}</td>
+                <td>{{ essay.score }}</td>
                 <td>{{ essay.created_at|date:"d M Y" }}</td>
                 {% comment %} <td>
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
